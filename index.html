@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game show cùng FIA</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://i.ibb.co/jWCFXww/DALL-E-2024-05-23-22-57.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        #intro-image {
+            width: 50%;
+            transition: all 3s ease;
+        }
+        #content {
+            animation: fadeIn 5s forwards;
+            opacity: 0;
+            padding-top: 20px;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .highlight {
+            color: #4CAF50; /* Change color for highlighting */
+            font-weight: bold;
+        }
+        #start-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        #start-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://i.ibb.co/cwFLLy9/Share.png" id="intro-image">
+    <div id="content">
+        <p>Bạn đã sẵn sàng chinh phục thử thách Ai là triệu phú cùng <span class="highlight">FPT Information Assurance Club</span> chưa?</p>
+        <button id="start-button" onclick="redirectToRandomLink()">BẮT ĐẦU</button>
+    </div>
+
+    <script>
+        // List of links
+        var links = [
+            "https://yourhomework.net/quiz/ai-la-trieu-phu/000000292015",
+            "https://yourhomework.net/quiz/ai-la-trieu-phu/000000119128",
+            "https://yourhomework.net/quiz/ai-la-trieu-phu/000000368035",
+            "https://yourhomework.net/quiz/ai-la-trieu-phu/000000219024",
+            "https://yourhomework.net/quiz/ai-la-trieu-phu/000000290023",
+            "https://yourhomework.net/quiz/ai-la-trieu-phu/000000362031",
+            "https://yourhomework.net/quiz/ai-la-trieu-phu/000000272027"
+        ];
+
+        // Redirect to a random link
+        function redirectToRandomLink() {
+            var randomLink = links[Math.floor(Math.random() * links.length)];
+            window.location.href = randomLink;
+        }
+
+        // Animate the image to shrink to its position
+        window.onload = function() {
+            var image = document.getElementById('intro-image');
+            setTimeout(function() {
+                image.style.width = '25%'; // Shrink image to 25% of its initial size
+            }, 500); // Start animation after 0.5 second
+
+            var content = document.getElementById('content');
+            setTimeout(function() {
+                content.style.opacity = 1; // Fade in content after the image has shrunk
+            }, 500); // Start showing content after 0.5 seconds
+        };
+    </script>
+</body>
+</html>
