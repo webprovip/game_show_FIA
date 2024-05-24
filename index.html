@@ -66,6 +66,34 @@
         th {
             background-color: #333;
         }
+
+        /*Hiệu ứng hạt bay - Start */
+        .particle {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: hsl(0, 100%, 75%);
+            animation: fall 10s infinite linear;
+        }
+        @keyframes fall {
+            0% {
+                top: -5px;
+                left: calc(100% * var(--x));
+                background-color: hsl(0, 100%, 75%);
+            }
+            50% {
+                background-color: hsl(180, 100%, 75%);
+            }
+            100% {
+                top: 110%;
+                left: calc(100% * var(--x));
+                background-color: hsl(360, 100%, 75%);
+            }
+        }
+
+        /*Hiệu ứng hạt bay - END */
+
         @media (max-width: 600px) {
             #intro-image {
                 max-width: 100%;
@@ -129,17 +157,39 @@
         }
 
         // Animate the image to shrink to its position
-        window.onload = function() {
-            var image = document.getElementById('intro-image');
-            setTimeout(function() {
-                image.style.width = '25%'; // Shrink image to 25% of its initial size
-            }, 500); // Start animation after 0.5 second
+window.onload = function() {
+    var image = document.getElementById('intro-image');
+    setTimeout(function() {
+        image.style.width = '25%'; // Shrink image to 25% of its initial size
+    }, 0); // Start animation after 0 second
+};
 
-            var content = document.getElementById('content');
-            setTimeout(function() {
-                content.style.opacity = 1; // Fade in content after the image has shrunk
-            }, 500); // Start showing content after 0.5 seconds
-        };
     </script>
+
+
+
+
+<script>
+    // Hiệu ứng hạt bay - END 
+
+    // Create particles
+    function createParticle() {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.setProperty('--x', Math.random().toFixed(2));
+        document.body.appendChild(particle);
+        setTimeout(() => {
+            document.body.removeChild(particle);
+        }, 10000); // remove particle after 10 seconds
+    }
+    // Generate particles at a slower pace
+    setInterval(createParticle, 250);
+
+
+    // Hiệu ứng hạt bay - END 
+</script>
+
+
+
 </body>
 </html>
